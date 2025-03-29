@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="hk.edu.hkmu.hketa" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>HKETA</name>
+    <description>Hong Kong Transport Information App</description>
+    <author email="kinwanglam@gmail.com" href="https://cordova.apache.org">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+	
+	<platform name="android">
+    <icon src="res/android/mdpi.png" density="mdpi" />
+    <icon src="res/android/hdpi.png" density="hdpi" />
+    <icon src="res/android/xhdpi.png" density="xhdpi" />
+    <icon src="res/android/xxhdpi.png" density="xxhdpi" />
+    <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
+</platform>
+
+</widget>
+

@@ -1,0 +1,31 @@
+{
+  "name": "hk.edu.hkmu.hketa",
+  "displayName": "HKETA",
+  "version": "1.0.0",
+  "description": "A application that providing Hong Kong transportation ETA.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "cordova-android": "^14.0.0",
+    "cordova-plugin-geolocation": "^5.0.0",
+    "cordova-plugin-inappbrowser": "^6.0.0",
+    "cordova-plugin-network-information": "^3.0.0"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-inappbrowser": {}
+    },
+    "platforms": [
+      "android"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+# Apache Cordova default exclusions
+.DS_Store
+node_modules/
+plugins/
+platforms/
+www/
+
+# Sensitive files (NEVER commit these!)
+*.keystore
+*.jks
+my-release-key.keystore
+*-private.json
+*-keys.xml
+
+# Build artifacts
+/build/
+/reports/
+*.apk
+*.ipa
+*.aab
+
+# System files
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# IDE files (if you use editors like VS Code)
+.vscode/
+.idea/
+
