@@ -36,7 +36,7 @@ A application that providing Hong Kong transportation ETA.
 
 <br><br>
 
-## Screenshot Of The Website
+## Screenshot Of The App
 
 <br>
 
