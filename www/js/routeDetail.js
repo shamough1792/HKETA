@@ -604,6 +604,7 @@ const allStations = {
     'SUW': { name_en: 'Sung Wong Toi', name_tc: '宋皇臺' },
     'TKW': { name_en: 'To Kwa Wan', name_tc: '土瓜灣' },
     'HOM': { name_en: 'Ho Man Tin', name_tc: '何文田' },
+    'HUH': { name_en: 'Hung Hom', name_tc: '紅磡' },	
     'ETS': { name_en: 'East Tsim Sha Tsui', name_tc: '尖東' },
     'AUS': { name_en: 'Austin', name_tc: '柯士甸' },
     'MEF': { name_en: 'Mei Foo', name_tc: '美孚' },
@@ -626,6 +627,7 @@ const allStations = {
 
     'ADM': { name_en: 'Admiralty', name_tc: '金鐘' },
     'EXC': { name_en: 'Exhibition Centre', name_tc: '會展' },
+    'HUH': { name_en: 'Hung Hom', name_tc: '紅磡' },	
     'MKK': { name_en: 'Mong Kok East', name_tc: '旺角東' },
     'KOT': { name_en: 'Kowloon Tong', name_tc: '九龍塘' },
     'SHT': { name_en: 'Sha Tin', name_tc: '沙田' },
