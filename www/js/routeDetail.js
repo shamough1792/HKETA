@@ -255,38 +255,39 @@ async function searchStation() {
 }
 
 async function displayMtrEta(etaData, station, stationCard) {
+    // Remove loading element if exists
     const loadingElement = stationCard.nextElementSibling;
-    if (loadingElement && loadingElement.classList.contains('loading')) {
-        loadingElement.remove();
-    }
+    if (loadingElement?.classList.contains('loading')) loadingElement.remove();
 
+    // Create compact container
     const container = document.createElement('div');
     container.className = 'station-eta-container';
     
-    container.innerHTML = `
-        <div class="eta-header-container">
-            <button class="station-eta-close-btn">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="station-name">
-                <div class="lang-en">${getMtrStationName(station).name_en}</div>
-                <div class="lang-tc">${getMtrStationName(station).name_tc}</div>
-            </div>
-            <button class="station-refresh-eta-btn" data-line="${route}" data-station="${station}">
-                <i class="fas fa-sync-alt"></i>
-                <span class="lang-en">Refresh</span>
-                <span class="lang-tc">刷新</span>
-            </button>
+container.innerHTML = `
+    <div class="eta-header-container">
+        <button class="station-eta-close-btn">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="station-name">
+            <div class="lang-en">${getMtrStationName(station).name_en}</div>
+            <div class="lang-tc">${getMtrStationName(station).name_tc}</div>
         </div>
-        <div class="eta-content"></div>
-    `;
+        <button class="station-refresh-eta-btn" data-line="${route}" data-station="${station}">
+            <i class="fas fa-sync-alt"></i>
+            <span class="lang-en">Refresh</span>
+            <span class="lang-tc">刷新</span>
+        </button>
+    </div>
+    <div class="eta-content"></div>
+`;
     
     const etaContent = container.querySelector('.eta-content');
     
-    if (!etaData || !etaData.data || etaData.status === 0) {
+    // Handle no data cases
+    if (!etaData?.data || etaData.status === 0 || !etaData.data[`${route}-${station}`]) {
         etaContent.innerHTML = `
             <div class="error-message">
-                <div class="lang-en">No schedule data available</div>
+                <div class="lang-en">No schedule data</div>
                 <div class="lang-tc">沒有班次資料</div>
             </div>
         `;
@@ -294,29 +295,16 @@ async function displayMtrEta(etaData, station, stationCard) {
         return;
     }
 
-    const stationKey = `${route}-${station}`;
-    const stationData = etaData.data[stationKey];
+    const stationData = etaData.data[`${route}-${station}`];
+    const directionsContainer = document.createElement('div');
+    directionsContainer.className = 'mtr-direction-container';
     
-    if (!stationData) {
-        etaContent.innerHTML = `
-            <div class="error-message">
-                <div class="lang-en">No data for this station</div>
-                <div class="lang-tc">此車站沒有資料</div>
-            </div>
-        `;
-        stationCard.after(container);
-        return;
-    }
-
-    const directions = ['UP', 'DOWN'];
-    const stationName = getMtrStationName(station);
-    
-    directions.forEach(dir => {
-        if (stationData[dir] && stationData[dir].length > 0) {
+    // Process both directions
+    ['UP', 'DOWN'].forEach(dir => {
+        if (stationData[dir]?.length > 0) {
+            const directionName = getDirectionName(route, dir);
             const dirElement = document.createElement('div');
             dirElement.className = 'mtr-direction';
-            
-            const directionName = getDirectionName(route, dir);
             
             dirElement.innerHTML = `
                 <h4>
@@ -324,83 +312,61 @@ async function displayMtrEta(etaData, station, stationCard) {
                     <span class="lang-tc">${directionName.tc}</span>
                 </h4>
                 <div class="mtr-eta-list">
-                    ${stationData[dir].map(eta => {
-                        let timeText;
-                        if (eta.ttnt < 0) {
-                            timeText = `<span class="lang-en">Departed </span><span class="lang-tc">已開出</span>`;
-                        } else if (eta.ttnt <= 1) {
-                            timeText = `<span class="lang-en">Arriving soon </span><span class="lang-tc">即將到達</span>`;
-                        } else {
-                            timeText = `<span class="lang-en">${eta.ttnt} min </span><span class="lang-tc">${eta.ttnt} 分鐘</span>`;
-                        }
-                        
-                        const platformText = eta.plat 
-                            ? `<div class="eta-platform">
-                                   <span class="lang-en">Platform ${eta.plat}</span>
-                                   <span class="lang-tc">月台 ${eta.plat}</span>
-                               </div>`
-                            : '';
-                        
-                        const itemClass = eta.ttnt < 0 ? 'departed' : '';
-                        
-                        return `
-                        <div class="eta-item ${itemClass}">
+                    ${stationData[dir].map(eta => `
+                        <div class="eta-item ${eta.ttnt < 0 ? 'departed' : eta.ttnt <= 1 ? 'arriving' : ''}">
                             <div class="eta-dest">
-                                <span class="lang-en">To ${getMtrStationName(eta.dest).name_en}</span>
-                                <span class="lang-tc">往 ${getMtrStationName(eta.dest).name_tc}</span>
+                                <div class="lang-en">To ${getMtrStationName(eta.dest).name_en}</div>
+                                <div class="lang-tc">往 ${getMtrStationName(eta.dest).name_tc}</div>
                             </div>
                             <div class="eta-ttnt">
-                                ${timeText}
+                                ${eta.ttnt < 0 
+                                    ? '<span class="lang-en">Departed</span><span class="lang-tc">已開出</span>'
+                                    : eta.ttnt <= 1
+                                        ? '<span class="lang-en">Arriving</span><span class="lang-tc">即將到達</span>'
+                                        : `<span class="lang-en">${eta.ttnt} min</span><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
                             </div>
-                            ${platformText}
+                            ${eta.plat ? `
+                                <div class="eta-platform">
+                                    <span class="lang-en">Platform ${eta.plat}</span>
+                                    <span class="lang-tc">月台 ${eta.plat}</span>
+                                </div>` : ''}
                         </div>
-                        `;
-                    }).join('')}
+                    `).join('')}
                 </div>
             `;
-            etaContent.appendChild(dirElement);
+            directionsContainer.appendChild(dirElement);
         }
     });
 
-    // Refresh button functionality
-    const refreshBtn = container.querySelector('.station-refresh-eta-btn');
-    refreshBtn.addEventListener('click', async (e) => {
+    etaContent.appendChild(directionsContainer);
+
+    // Add event listeners
+    container.querySelector('.station-refresh-eta-btn').addEventListener('click', async (e) => {
         e.stopPropagation();
-        refreshBtn.classList.add('refreshing');
-        
+        e.target.classList.add('refreshing');
         try {
             const newEtaData = await api.getMtrSchedule(route, station);
             container.remove();
-            
-            // Show loading state
-            const loadingHTML = `
+            stationCard.insertAdjacentHTML('afterend', `
                 <div class="station-eta-container loading">
-                    <div class="lang-en">Loading updated times...</div>
-                    <div class="lang-tc">正在載入更新時間...</div>
+                    <div class="lang-en">Loading...</div>
+                    <div class="lang-tc">載入中...</div>
                 </div>
-            `;
-            stationCard.insertAdjacentHTML('afterend', loadingHTML);
-            
-            // Small delay for better UX
-            setTimeout(() => {
-                displayMtrEta(newEtaData, station, stationCard);
-            }, 300);
+            `);
+            setTimeout(() => displayMtrEta(newEtaData, station, stationCard), 300);
         } catch (error) {
-            console.error('Refresh failed:', error);
             etaContent.innerHTML = `
                 <div class="error-message">
-                    <div class="lang-en">Failed to refresh</div>
+                    <div class="lang-en">Refresh failed</div>
                     <div class="lang-tc">更新失敗</div>
                 </div>
             `;
         } finally {
-            refreshBtn.classList.remove('refreshing');
+            e.target.classList.remove('refreshing');
         }
     });
 
-    // Close button functionality
-    const closeBtn = container.querySelector('.station-eta-close-btn');
-    closeBtn.addEventListener('click', (e) => {
+    container.querySelector('.station-eta-close-btn').addEventListener('click', (e) => {
         e.stopPropagation();
         container.remove();
     });

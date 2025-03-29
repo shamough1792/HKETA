@@ -722,15 +722,6 @@ h5 { font-size: 0.875rem; }
     transform: translateY(-1px);
 }
 
-/* MTR Specific Styles */
-.mtr-direction {
-    margin-bottom: var(--space-xl);
-    padding: var(--space-md);
-    background: var(--card-bg);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-}
-
 .station-search {
     display: flex;
     gap: 10px;
@@ -863,9 +854,8 @@ h5 { font-size: 0.875rem; }
 }
 
 .station-name {
-    flex-grow: 1;
-    text-align: center;
-    padding: 0 30px; /* Give space for buttons */
+    font-size: 1rem;
+    padding: 0 4px;
 }
 
 .lang-en {
@@ -886,21 +876,14 @@ h5 { font-size: 0.875rem; }
 }
 
 .station-eta-container {
-    position: relative;
-    width: 100%;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: var(--background);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
+    max-width: 100%;
+    padding: 12px;
+    margin: 8px 0;
 }
 
 .eta-header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    position: relative;
+    padding: 8px 0;
+    margin-bottom: 8px;
 }
 
 .station-eta-title {
@@ -915,7 +898,8 @@ h5 { font-size: 0.875rem; }
     background: none;
     border: none;
     color: var(--primary);
-    font-size: 14px;
+    font-size: 0.85rem;
+	padding: 4px 6px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -942,7 +926,8 @@ h5 { font-size: 0.875rem; }
     background: none;
     border: none;
     color: var(--text-light);
-    font-size: 16px;
+    font-size: 0.85rem;
+	padding: 4px 6px;
     cursor: pointer;
     width: 32px;
     height: 32px;
@@ -969,12 +954,6 @@ h5 { font-size: 0.875rem; }
     text-align: center;
     padding: 20px;
     color: var(--text-light);
-}
-
-.mtr-eta-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 }
 
 /* ETA Modal Styles */
@@ -1048,11 +1027,11 @@ h5 { font-size: 0.875rem; }
 }
 
 .eta-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-sm) 0;
-    border-bottom: 1px solid var(--border);
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    background-color: var(--background);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
 }
 
 .eta-time {
@@ -1246,4 +1225,144 @@ button:focus, input:focus, select:focus, textarea:focus {
     object-fit: contain;
     margin-right: 12px;
     vertical-align: middle;
+}
+
+/* MTR ETA 容器样式 */
+.mtr-direction-container {
+    display: flex;
+    gap: 8px; /* Reduced gap */
+    width: 100%;
+	margin-top: 12px;
+}
+
+/* 每个方向的样式 */
+.mtr-direction {
+    flex: 1;
+    min-width: 0;
+    padding: 8px; /* Reduced padding */
+    background: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    font-size: 0.9rem; /* Slightly smaller font */
+	margin-top: 8px;
+}
+
+/* ETA 列表样式 */
+.mtr-eta-list {
+    max-height: 200px; /* Shorter scroll area */
+    overflow-y: auto;
+    padding-right: 4px;
+    margin-top: 6px;
+}
+
+/* 自定义滚动条 */
+.mtr-eta-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.mtr-eta-list::-webkit-scrollbar-thumb {
+    background-color: var(--primary-light);
+    border-radius: 2px;
+}
+
+/* ETA 项目样式 */
+.eta-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: var(--background);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+}
+
+/* 方向标题样式 */
+.mtr-direction h4 {
+    font-size: 0.95rem;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+}
+
+/* Compact platform info */
+.eta-platform {
+    padding: 2px 4px;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+/* 已开出的班次样式 */
+.eta-item.departed {
+    opacity: 0.7;
+}
+
+.eta-item.departed .eta-ttnt {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+/* 即将到达的班次样式 */
+.eta-item.arriving .eta-ttnt {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.station-eta-container {
+    position: relative;
+    padding: 16px; /* Increased padding */
+    margin: 12px 0; /* Increased margin */
+    background-color: var(--card-bg);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+}
+
+.eta-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    margin-bottom: 16px; /* Increased space below header */
+    position: relative;
+}
+
+.station-name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: auto;
+    max-width: 60%;
+	border-bottom: 1px dashed var(--border); /* 添加虚线 */
+}
+
+.station-refresh-eta-btn {
+    order: 3;
+    margin-left: auto; /* Pushes it to the right */
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.station-eta-close-btn {
+    order: 1;
+    margin-right: auto; /* Pushes it to the left */
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
 }
