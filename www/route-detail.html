@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Route Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <main class="main-content">
+<header class="app-header">
+    <h1 id="page-title">Route Details</h1>
+    <button class="back-btn" id="close-btn">
+        <i class="fas fa-times"></i>
+    </button>
+</header>
+            
+            <div class="content-area">
+                <div id="route-detail-view">
+                    <div class="route-detail-header">
+                        <div class="route-title">
+                            <h2 id="detail-route-number">--</h2>
+                            <div class="route-company" id="detail-route-company">--</div>
+                        </div>
+                        <div class="direction-switcher">
+                            <button class="direction-btn active" id="outbound-btn">
+                                <div class="direction-content">
+                                    <div class="lang-en">Loading...</div>
+                                    <div class="lang-tc">載入中...</div>
+                                </div>
+                            </button>
+                            <button class="direction-btn" id="inbound-btn">
+                                <div class="direction-content">
+                                    <div class="lang-en">Loading...</div>
+                                    <div class="lang-tc">載入中...</div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="route-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Stops: <span id="route-stops-count">--</span></span>
+                        </div>
+                    </div>
+                    
+                    <div class="stops-list-container">
+                        <h3>Stops</h3>
+                        <div id="stops-list">
+                            <div class="loading">Loading route details...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="eta-modal" id="eta-modal">
+            <div class="eta-modal-content">
+                <div class="eta-modal-header">
+                    <div class="eta-modal-title" id="eta-modal-title">Bus ETA</div>
+                    <div class="eta-modal-actions">
+                        <button class="eta-refresh-btn" id="eta-refresh-btn" title="Refresh">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <button class="eta-close-btn" id="eta-close-btn">&times;</button>
+                    </div>
+                </div>
+                <div class="eta-modal-body" id="eta-modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/apiService.js"></script>
+    <script src="js/routeDetail.js"></script>
+</body>
+</html>

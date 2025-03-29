@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>HK Transport</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <div class="avatar">👋</div>
+                    <div class="user-info">
+                        <h4>Welcome!</h4>
+                        <p>Hong Kong Transport Information</p>
+                    </div>
+                </div>
+                <button class="close-btn" id="close-sidebar">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <h5>TRANSPORT COMPANIES</h5>
+                <ul>
+                    <li class="active" data-company="all">
+                        <i class="fas fa-layer-group"></i>
+                        <span>All Companies</span>
+                    </li>
+                    <li data-company="kmb">
+                        <i class="fas fa-bus" style="color: #E31937"></i>
+                        <span>KMB & LWB</span>
+                    </li>
+                    <li data-company="ctb">
+                        <i class="fas fa-bus" style="color: #fadc00"></i>
+                        <span>Citybus</span>
+                    </li>
+                    <li data-company="nlb">
+                        <i class="fas fa-bus" style="color: #009688"></i>
+                        <span>NLB</span>
+                    </li>					
+					<li data-company="mtr">
+					<img src="img/mtr.png" alt="MTR" class="mtr-logo">
+					<span>MTR</span>
+					</li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="app-header">
+                <button class="menu-btn" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="page-title">Routes</h1>
+            </header>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search Route...">
+                </div>
+            </div>
+            
+            <div class="content-area">
+                <div id="routes-view">
+                    
+                    <div class="section-header">
+                        <h2>Available Routes</h2>
+                    </div>
+                    
+                    <div id="routes-container">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="cordova.js"></script>
+    <script src="js/apiService.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
