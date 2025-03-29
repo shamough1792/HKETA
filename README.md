@@ -18,17 +18,6 @@ A application that providing Hong Kong transportation ETA.
 
 <br>
 
-### Dependencies
-
-* 
-
-<br>
-
-### Installing
-
-
-
-<br><br>
 
 ## Setup
 
