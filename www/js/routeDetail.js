@@ -327,7 +327,7 @@ container.innerHTML = `
                             </div>
                             ${eta.plat ? `
                                 <div class="eta-platform">
-                                    <span class="lang-en">Platform ${eta.plat}</span>
+                                    <span class="lang-en">Platform ${eta.plat} </span>
                                     <span class="lang-tc">月台 ${eta.plat}</span>
                                 </div>` : ''}
                         </div>
