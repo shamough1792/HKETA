@@ -8,7 +8,6 @@ A application that providing Hong Kong transportation ETA.
 
 ## Description
 
-<br>
 
 
 
@@ -17,13 +16,6 @@ A application that providing Hong Kong transportation ETA.
 ## Getting Started
 
 <br>
-
-
-## Setup
-
-
-
-<br><br>
 
 ## Screenshot Of The App
 
@@ -56,6 +48,9 @@ A application that providing Hong Kong transportation ETA.
 
 * 1.0
     * Initial Release.
+
+* 1.1
+    * Improved UI Design.
 
 <br>
 
