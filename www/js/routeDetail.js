@@ -213,45 +213,46 @@ function getLineColor(lineCode) {
             }
         });
 
-        async function searchStation() {
-            const station = document.getElementById('station-select').value;
-            if (station) {
-                const stationName = getMtrStationName(station);
-                const stationCard = document.querySelector(`.station-card[data-station-code="${station}"]`);
-                
-                const existingEta = stationCard.nextElementSibling;
-                if (existingEta && existingEta.classList.contains('station-eta-container')) {
-                    existingEta.remove();
-                }
+async function searchStation() {
+    const station = document.getElementById('station-select').value;
+    if (station) {
+        const stationName = getMtrStationName(station);
+        const stationCard = document.querySelector(`.station-card[data-station-code="${station}"]`);
+        
+        // Remove existing ETA container if it exists
+        const existingEta = stationCard.nextElementSibling;
+        if (existingEta && existingEta.classList.contains('station-eta-container')) {
+            existingEta.remove();
+        }
 
-                const loadingHTML = `
-                    <div class="station-eta-container loading">
-                        <div class="lang-en">Loading schedule for ${stationName.name_en}...</div>
-                        <div class="lang-tc">正在載入 ${stationName.name_tc} 的時間表...</div>
+        const loadingHTML = `
+            <div class="station-eta-container loading">
+                <div class="lang-en">Loading schedule for ${stationName.name_en}...</div>
+                <div class="lang-tc">正在載入 ${stationName.name_tc} 的時間表...</div>
+            </div>
+        `;
+        
+        stationCard.insertAdjacentHTML('afterend', loadingHTML);
+        
+        try {
+            const etaData = await api.getMtrSchedule(route, station);
+            displayMtrEta(etaData, station, stationCard);
+        } catch (error) {
+            const loadingElement = stationCard.nextElementSibling;
+            if (loadingElement && loadingElement.classList.contains('loading')) {
+                loadingElement.outerHTML = `
+                    <div class="station-eta-container error-message">
+                        <div class="lang-en">Failed to load schedule</div>
+                        <div class="lang-tc">無法載入時間表</div>
                     </div>
                 `;
-                
-                stationCard.insertAdjacentHTML('afterend', loadingHTML);
-                
-                try {
-                    const etaData = await api.getMtrSchedule(line, station);
-                    displayMtrEta(etaData, station, stationCard);
-                } catch (error) {
-                    const loadingElement = stationCard.nextElementSibling;
-                    if (loadingElement && loadingElement.classList.contains('loading')) {
-                        loadingElement.outerHTML = `
-                            <div class="station-eta-container error-message">
-                                <div class="lang-en">Failed to load schedule</div>
-                                <div class="lang-tc">無法載入時間表</div>
-                            </div>
-                        `;
-                    }
-                    console.error('Error fetching MTR schedule:', error);
-                }
-            } else {
-                document.querySelectorAll('.station-eta-container').forEach(eta => eta.remove());
             }
+            console.error('Error fetching MTR schedule:', error);
         }
+    } else {
+        document.querySelectorAll('.station-eta-container').forEach(eta => eta.remove());
+    }
+}
 
 async function displayMtrEta(etaData, station, stationCard) {
     const loadingElement = stationCard.nextElementSibling;
@@ -263,9 +264,20 @@ async function displayMtrEta(etaData, station, stationCard) {
     container.className = 'station-eta-container';
     
     container.innerHTML = `
-        <button class="eta-close-btn">
-            <i class="fas fa-times"></i>
-        </button>
+        <div class="eta-header-container">
+            <button class="station-eta-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="station-name">
+                <div class="lang-en">${getMtrStationName(station).name_en}</div>
+                <div class="lang-tc">${getMtrStationName(station).name_tc}</div>
+            </div>
+            <button class="station-refresh-eta-btn" data-line="${route}" data-station="${station}">
+                <i class="fas fa-sync-alt"></i>
+                <span class="lang-en">Refresh</span>
+                <span class="lang-tc">刷新</span>
+            </button>
+        </div>
         <div class="eta-content"></div>
     `;
     
@@ -350,12 +362,50 @@ async function displayMtrEta(etaData, station, stationCard) {
         }
     });
 
-    stationCard.after(container);
-    
-    container.querySelector('.eta-close-btn').addEventListener('click', () => {
+    // Refresh button functionality
+    const refreshBtn = container.querySelector('.station-refresh-eta-btn');
+    refreshBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        refreshBtn.classList.add('refreshing');
+        
+        try {
+            const newEtaData = await api.getMtrSchedule(route, station);
+            container.remove();
+            
+            // Show loading state
+            const loadingHTML = `
+                <div class="station-eta-container loading">
+                    <div class="lang-en">Loading updated times...</div>
+                    <div class="lang-tc">正在載入更新時間...</div>
+                </div>
+            `;
+            stationCard.insertAdjacentHTML('afterend', loadingHTML);
+            
+            // Small delay for better UX
+            setTimeout(() => {
+                displayMtrEta(newEtaData, station, stationCard);
+            }, 300);
+        } catch (error) {
+            console.error('Refresh failed:', error);
+            etaContent.innerHTML = `
+                <div class="error-message">
+                    <div class="lang-en">Failed to refresh</div>
+                    <div class="lang-tc">更新失敗</div>
+                </div>
+            `;
+        } finally {
+            refreshBtn.classList.remove('refreshing');
+        }
+    });
+
+    // Close button functionality
+    const closeBtn = container.querySelector('.station-eta-close-btn');
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
         container.remove();
     });
-    
+
+    stationCard.after(container);
     container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
     }
