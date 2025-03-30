@@ -1045,7 +1045,9 @@ h5 { font-size: 0.875rem; }
 }
 
 .eta-soon .eta-time,
-.eta-soon .eta-remaining {
+.eta-soon .eta-remaining,
+.eta-soon .lang-en,
+.eta-soon .lang-tc {
     color: var(--danger);
     font-weight: 600;
 }
@@ -1300,8 +1302,9 @@ button:focus, input:focus, select:focus, textarea:focus {
 }
 
 /* 即将到达的班次样式 */
-.eta-item.arriving .eta-ttnt {
-    color: var(--accent);
+.eta-item.arriving .eta-ttnt .lang-en,
+.eta-item.arriving .eta-ttnt .lang-tc {
+    color: var(--danger);
     font-weight: bold;
 }
 

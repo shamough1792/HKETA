@@ -320,9 +320,9 @@ container.innerHTML = `
                             </div>
                             <div class="eta-ttnt">
                                 ${eta.ttnt < 0 
-                                    ? '<span class="lang-en">Departed</span><span class="lang-tc">已開出</span>'
+                                    ? '<span class="lang-en">Departed </span><span class="lang-tc">已開出</span>'
                                     : eta.ttnt <= 1
-                                        ? '<span class="lang-en">Arriving</span><span class="lang-tc">即將到達</span>'
+                                        ? '<span class="lang-en">Arriving Soon </span><span class="lang-tc">即將到達</span>'
                                         : `<span class="lang-en">${eta.ttnt} min </span><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
                             </div>
                             ${eta.plat ? `
