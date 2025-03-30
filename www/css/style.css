@@ -450,9 +450,11 @@ h5 { font-size: 0.875rem; }
 }
 
 .route-company.mtr {
-    background-color: var(--mtr-blue);
-    color: #ffffff;
-	font-weight: 800;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	min-width: 35px;
+	min-height: 15px;
 }
 
 .route-company.ctb {

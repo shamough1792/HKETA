@@ -157,15 +157,15 @@ class TransportAPI {
 async getMtrLines() {
     return {
         lines: [
-            { code: 'AEL', name_en: 'Airport Express', name_tc: '機場快綫' },
-            { code: 'TCL', name_en: 'Tung Chung Line', name_tc: '東涌綫' },
-			{ code: 'EAL', name_en: 'East Rail Line', name_tc: '東鐵綫' },
-			{ code: 'TML', name_en: 'Tuen Ma Line', name_tc: '屯馬綫' },
-			{ code: 'TKL', name_en: 'Tseung Kwan O Line', name_tc: '將軍澳綫' },
-			{ code: 'SIL', name_en: 'South Island Line', name_tc: '南港島綫（東段）' },
-			{ code: 'TWL', name_en: 'Tsuen Wan Line', name_tc: '荃灣綫' },			
+			{ code: 'TWL', name_en: 'Tsuen Wan Line', name_tc: '荃灣綫' },
+			{ code: 'KTL', name_en: 'Kwun Tong Line', name_tc: '觀塘綫' },			
 			{ code: 'ISL', name_en: 'Island Line', name_tc: '港島綫' },
-			{ code: 'KTL', name_en: 'Kwun Tong Line', name_tc: '觀塘綫' },
+			{ code: 'SIL', name_en: 'South Island Line', name_tc: '南港島綫（東段）' },
+			{ code: 'TKL', name_en: 'Tseung Kwan O Line', name_tc: '將軍澳綫' },		
+			{ code: 'TML', name_en: 'Tuen Ma Line', name_tc: '屯馬綫' },	
+			{ code: 'EAL', name_en: 'East Rail Line', name_tc: '東鐵綫' },		
+            { code: 'TCL', name_en: 'Tung Chung Line', name_tc: '東涌綫' },				
+            { code: 'AEL', name_en: 'Airport Express', name_tc: '機場快綫' },		
 			{ code: 'DRL', name_en: 'Disneyland Resort Line', name_tc: '迪士尼綫' },
         ]
     };

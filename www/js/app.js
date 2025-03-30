@@ -3,6 +3,19 @@ document.addEventListener('deviceready', onDeviceReady, false);
 const api = new TransportAPI();
 let currentCompany = 'all';
 
+const mtrLineColors = {
+    'TWL': '#ff0000', // 荃灣綫
+    'KTL': '#1a9431', // 觀塘綫
+    'ISL': '#0860a8', // 港島綫
+    'TKL': '#6b208b', // 將軍澳綫
+    'TCL': '#fe7f1d', // 東涌綫
+    'DRL': '#f550a6', // 迪士尼綫
+    'AEL': '#1c7670', // 機場快綫
+    'EAL': '#53b7e8', // 東鐵綫
+    'TML': '#9a3b26', // 屯馬綫
+    'SIL': '#b5bd00'  // 南港島綫
+};
+
 function onDeviceReady() {
     console.log('Device ready, initializing app...');
     
@@ -143,16 +156,18 @@ async function loadRoutes(company) {
             }
         }
 		
-		if (company === 'all' || company === 'mtr') {
+if (company === 'all' || company === 'mtr') {
     const mtrLines = await api.getMtrLines();
     if (mtrLines?.lines && mtrLines.lines.length > 0) {
         mtrLines.lines.forEach(line => {
             const routeElement = document.createElement('div');
             routeElement.className = 'route-card';
+            const lineColor = mtrLineColors[line.code] || '#000000'; // default to black if code not found
+            
             routeElement.innerHTML = `
                 <div class="route-header">
                     <div class="route-number">${line.code}</div>
-                    <div class="route-company mtr">MTR</div>
+<div class="route-company mtr" style="background-color: ${lineColor}"></div>
                 </div>
                 <div class="route-details">
                     <div class="route-direction">

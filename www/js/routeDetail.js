@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentDirection = urlParams.get('direction') || 'outbound';
     const currentServiceType = '1';
 
+    const mtrLineColors = {
+        'TWL': '#ff0000', // 荃灣綫
+        'KTL': '#1a9431', // 觀塘綫
+        'ISL': '#0860a8', // 港島綫
+        'TKL': '#6b208b', // 將軍澳綫
+        'TCL': '#fe7f1d', // 東涌綫
+        'DRL': '#f550a6', // 迪士尼綫
+        'AEL': '#1c7670', // 機場快綫
+        'EAL': '#53b7e8', // 東鐵綫
+        'TML': '#9a3b26', // 屯馬綫
+        'SIL': '#b5bd00'  // 南港島綫
+    };
+	
     let currentStopId = null;
     let currentStopName = {
         en: '',
@@ -34,7 +47,9 @@ document.addEventListener('DOMContentLoaded', function() {
         elements.routeCompany.textContent = 'NLB';
     } else if (company === 'mtr') {
         elements.routeNumber.textContent = route;
+        const lineColor = mtrLineColors[route] || '#000000';
         elements.routeCompany.textContent = 'MTR';
+        elements.routeCompany.style.backgroundColor = lineColor;
     } else {
         elements.routeNumber.textContent = route;
         elements.routeCompany.textContent = company.toUpperCase();
@@ -106,19 +121,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     async function handleMtrRoute() {
         const lineNames = {
-    'AEL': { en: 'Airport Express', tc: '機場快綫' },
-    'TCL': { en: 'Tung Chung Line', tc: '東涌綫' },
-    'EAL': { en: 'East Rail Line', tc: '東鐵綫' },
-    'TML': { en: 'Tuen Ma Line', tc: '屯馬綫' },
-    'TKL': { en: 'Tseung Kwan O Line', tc: '將軍澳綫' },
-    'SIL': { en: 'South Island Line', tc: '南港島綫（東段）' },
     'TWL': { en: 'Tsuen Wan Line', tc: '荃灣綫' },
+    'KTL': { en: 'Kwun Tong Line', tc: '觀塘綫' },	
     'ISL': { en: 'Island Line', tc: '港島綫' },
-    'KTL': { en: 'Kwun Tong Line', tc: '觀塘綫' },
+	'SIL': { en: 'South Island Line', tc: '南港島綫（東段）' },
+    'TKL': { en: 'Tseung Kwan O Line', tc: '將軍澳綫' },	
+    'TML': { en: 'Tuen Ma Line', tc: '屯馬綫' },	
+    'EAL': { en: 'East Rail Line', tc: '東鐵綫' },
+    'AEL': { en: 'Airport Express', tc: '機場快綫' },
+    'TCL': { en: 'Tung Chung Line', tc: '東涌綫' },	
     'DRL': { en: 'Disneyland Resort Line', tc: '迪士尼綫' }
         };
         
         const lineName = lineNames[route] || { en: route, tc: route };
+		const lineColor = mtrLineColors[route] || '#000000';
         const line = route;
         
         document.getElementById('page-title').textContent = `${lineName.en} | MTR`;
@@ -130,8 +146,11 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         
-        elements.routeCompany.textContent = 'MTR';
-        elements.routeCompany.classList.add('mtr');
+elements.routeCompany.textContent = '';
+elements.routeCompany.classList.add('mtr');
+elements.routeCompany.style.backgroundColor = lineColor;
+elements.routeCompany.style.width = '35px';
+elements.routeCompany.style.height = '15px';
         
         elements.outboundBtn.style.display = 'none';
         elements.inboundBtn.style.display = 'none';
