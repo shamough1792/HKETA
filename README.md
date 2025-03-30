@@ -40,15 +40,15 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 <br>
 
 * User-Friendly Interface:
-  * Clean, modern design with responsive layout
-  * Fast search functionality
-  * Sidebar navigation
+  * Clean, modern design with responsive layout.
+  * Fast search functionality.
+  * Sidebar navigation.
 
 <br>
 
 * Additional Features:
-  * Station location mapping
-  * Bilingual interface (English/Chinese)
+  * Station location mapping.
+  * Bilingual interface (English/Chinese).
 
 <br>
 
