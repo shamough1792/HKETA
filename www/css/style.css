@@ -1,26 +1,21 @@
 :root {
-    /* Updated primary colors */
     --primary: #4361ee;
     --primary-light: #e0e7ff;
     --primary-dark: #3730a3;
     
-    /* Modern secondary palette */
     --secondary: #7c3aed;
     --accent: #10b981;
     --danger: #ef4444;
     
-    /* Improved text colors */
     --text: #1f2937;
     --text-light: #6b7280;
     --text-lighter: #9ca3af;
     
-    /* Background colors */
     --background: #f9fafb;
     --card-bg: #ffffff;
     --surface: #ffffff;
     --border: #e5e7eb;
     
-    /* Transport company colors */
     --kmb-red: #E31937;
     --longwin-yellow: #FFD100;
     --gmb-green: #4CAF50;
@@ -28,25 +23,21 @@
     --mtr-blue: #00254c;
     --ctb-blue: #0066cc;
     
-    /* Spacing */
     --space-xs: 4px;
     --space-sm: 8px;
     --space-md: 12px;
     --space-lg: 16px;
     --space-xl: 20px;
     
-    /* Border radius */
     --radius-sm: 6px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
     
-    /* Shadows */
     --shadow-sm: 0 1px 2px 0 rgba(0,0,0,0.05);
     --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
     
-    /* Transitions */
     --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -92,7 +83,6 @@ h5 { font-size: 0.875rem; }
     background-color: var(--background);
 }
 
-/* Header Styles */
 .app-header {
     padding: var(--space-sm) var(--space-lg);
     display: flex;
@@ -119,7 +109,6 @@ h5 { font-size: 0.875rem; }
     max-width: 60%;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 280px;
     height: 100vh;
@@ -242,13 +231,11 @@ h5 { font-size: 0.875rem; }
     font-size: 16px;
 }
 
-/* Main Content Styles */
 .main-content {
     flex: 1;
     padding-bottom: 80px;
 }
 
-/* Search Styles */
 .search-container {
     padding: var(--space-md) var(--space-lg);
     background-color: var(--surface);
@@ -304,12 +291,10 @@ h5 { font-size: 0.875rem; }
     background-color: var(--primary-light);
 }
 
-/* Content Area Styles */
 .content-area {
     padding: 0 var(--space-lg);
 }
 
-/* Button Styles */
 .menu-btn, .location-btn, .back-btn {
     background: none;
     border: none;
@@ -329,7 +314,6 @@ h5 { font-size: 0.875rem; }
     background-color: rgba(0,0,0,0.05);
 }
 
-/* Quick Actions */
 .quick-actions {
     display: flex;
     justify-content: space-between;
@@ -368,7 +352,6 @@ h5 { font-size: 0.875rem; }
     color: var(--text);
 }
 
-/* Section Header */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -388,7 +371,6 @@ h5 { font-size: 0.875rem; }
     font-weight: 500;
 }
 
-/* Route Card Styles */
 .route-card {
     background-color: var(--card-bg);
     border-radius: var(--radius-md);
@@ -515,7 +497,6 @@ h5 { font-size: 0.875rem; }
     transform: translateY(0);
 }
 
-/* Bottom Navigation */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -563,7 +544,7 @@ h5 { font-size: 0.875rem; }
     color: var(--primary);
 }
 
-/* Route Detail View */
+
 .route-detail-view {
     padding: var(--space-lg);
     display: none;
@@ -646,7 +627,6 @@ h5 { font-size: 0.875rem; }
     gap: var(--space-xs);
 }
 
-/* Stops List */
 .stops-list-container h3 {
     margin-bottom: var(--space-lg);
     font-size: 18px;
@@ -957,7 +937,6 @@ h5 { font-size: 0.875rem; }
     color: var(--text-light);
 }
 
-/* ETA Modal Styles */
 .eta-modal {
     display: none;
     position: fixed;
@@ -1066,7 +1045,6 @@ h5 { font-size: 0.875rem; }
     text-align: center;
 }
 
-/* Loading States */
 .loading {
     padding: var(--space-xl);
     text-align: center;
@@ -1121,7 +1099,6 @@ h5 { font-size: 0.875rem; }
     color: var(--border);
 }
 
-/* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -1137,7 +1114,6 @@ h5 { font-size: 0.875rem; }
     100% { transform: rotate(360deg); }
 }
 
-/* Accessibility */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -1155,7 +1131,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     outline-offset: 2px;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     .route-info {
         flex-direction: column;
@@ -1206,7 +1181,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     }
 }
 
-/* Print Styles */
 @media print {
     .sidebar, .bottom-nav, .search-container, .app-header {
         display: none !important;
@@ -1230,36 +1204,28 @@ button:focus, input:focus, select:focus, textarea:focus {
     vertical-align: middle;
 }
 
-/* MTR ETA 容器样式 */
 .mtr-direction-container {
     display: flex;
-    gap: 8px; /* Reduced gap */
     width: 100%;
 	margin-top: 12px;
 }
 
-/* 每个方向的样式 */
 .mtr-direction {
     flex: 1;
     min-width: 0;
-    padding: 8px; /* Reduced padding */
     background: var(--card-bg);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
-    font-size: 0.9rem; /* Slightly smaller font */
 	margin-top: 8px;
 }
 
-/* ETA 列表样式 */
 .mtr-eta-list {
-    max-height: 200px; /* Shorter scroll area */
     overflow-y: auto;
     padding-right: 4px;
     margin-top: 6px;
 }
 
-/* 自定义滚动条 */
 .mtr-eta-list::-webkit-scrollbar {
     width: 4px;
 }
@@ -1269,7 +1235,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     border-radius: 2px;
 }
 
-/* ETA 项目样式 */
 .eta-item {
     padding: 10px;
     margin-bottom: 8px;
@@ -1278,21 +1243,18 @@ button:focus, input:focus, select:focus, textarea:focus {
     border: 1px solid var(--border);
 }
 
-/* 方向标题样式 */
 .mtr-direction h4 {
     font-size: 0.95rem;
     padding-bottom: 4px;
     margin-bottom: 6px;
 }
 
-/* Compact platform info */
 .eta-platform {
     padding: 2px 4px;
     font-size: 0.8rem;
     margin-top: 2px;
 }
 
-/* 已开出的班次样式 */
 .eta-item.departed {
     opacity: 0.7;
 }
@@ -1302,7 +1264,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     color: var(--text-light);
 }
 
-/* 即将到达的班次样式 */
 .eta-item.arriving .eta-ttnt .lang-en,
 .eta-item.arriving .eta-ttnt .lang-tc {
     color: var(--danger);
@@ -1311,8 +1272,6 @@ button:focus, input:focus, select:focus, textarea:focus {
 
 .station-eta-container {
     position: relative;
-    padding: 16px; /* Increased padding */
-    margin: 12px 0; /* Increased margin */
     background-color: var(--card-bg);
     border-radius: var(--radius-md);
     box-shadow: var(--shadow-sm);
@@ -1324,7 +1283,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     align-items: center;
     justify-content: space-between;
     padding: 8px 0;
-    margin-bottom: 16px; /* Increased space below header */
     position: relative;
 }
 
@@ -1335,12 +1293,10 @@ button:focus, input:focus, select:focus, textarea:focus {
     text-align: center;
     width: auto;
     max-width: 60%;
-	border-bottom: 1px dashed var(--border); /* 添加虚线 */
 }
 
 .station-refresh-eta-btn {
     order: 3;
-    margin-left: auto; /* Pushes it to the right */
     background: none;
     border: none;
     color: var(--primary);
@@ -1356,7 +1312,6 @@ button:focus, input:focus, select:focus, textarea:focus {
 
 .station-eta-close-btn {
     order: 1;
-    margin-right: auto; /* Pushes it to the left */
     background: none;
     border: none;
     color: var(--text-light);

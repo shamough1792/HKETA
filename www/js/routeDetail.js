@@ -219,7 +219,6 @@ async function searchStation() {
         const stationName = getMtrStationName(station);
         const stationCard = document.querySelector(`.station-card[data-station-code="${station}"]`);
         
-        // Remove existing ETA container if it exists
         const existingEta = stationCard.nextElementSibling;
         if (existingEta && existingEta.classList.contains('station-eta-container')) {
             existingEta.remove();
@@ -255,11 +254,11 @@ async function searchStation() {
 }
 
 async function displayMtrEta(etaData, station, stationCard) {
-    // Remove loading element if exists
+
     const loadingElement = stationCard.nextElementSibling;
     if (loadingElement?.classList.contains('loading')) loadingElement.remove();
 
-    // Create compact container
+
     const container = document.createElement('div');
     container.className = 'station-eta-container';
     
@@ -283,7 +282,7 @@ container.innerHTML = `
     
     const etaContent = container.querySelector('.eta-content');
     
-    // Handle no data cases
+
     if (!etaData?.data || etaData.status === 0 || !etaData.data[`${route}-${station}`]) {
         etaContent.innerHTML = `
             <div class="error-message">
@@ -299,7 +298,7 @@ container.innerHTML = `
     const directionsContainer = document.createElement('div');
     directionsContainer.className = 'mtr-direction-container';
     
-    // Process both directions
+
     ['UP', 'DOWN'].forEach(dir => {
         if (stationData[dir]?.length > 0) {
             const directionName = getDirectionName(route, dir);
@@ -340,7 +339,7 @@ container.innerHTML = `
 
     etaContent.appendChild(directionsContainer);
 
-    // Add event listeners
+
     container.querySelector('.station-refresh-eta-btn').addEventListener('click', async (e) => {
         e.stopPropagation();
         e.target.classList.add('refreshing');
