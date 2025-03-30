@@ -25,7 +25,7 @@
     --longwin-yellow: #FFD100;
     --gmb-green: #4CAF50;
     --nlb-teal: #009688;
-    --mtr-blue: #0066cc;
+    --mtr-blue: #00254c;
     --ctb-blue: #0066cc;
     
     /* Spacing */
@@ -450,8 +450,9 @@ h5 { font-size: 0.875rem; }
 }
 
 .route-company.mtr {
-    background-color: rgba(0, 102, 204, 0.1);
-    color: var(--mtr-blue);
+    background-color: var(--mtr-blue);
+    color: #ffffff;
+	font-weight: 800;
 }
 
 .route-company.ctb {
