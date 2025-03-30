@@ -58,6 +58,9 @@ A application that providing Hong Kong transportation ETA.
  * 1.3
     * Updated UI.
 
+ * 1.4
+    * Updated MTR route UI.
+
 <br>
 
 ## Future Planning
