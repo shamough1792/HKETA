@@ -52,6 +52,12 @@ A application that providing Hong Kong transportation ETA.
 * 1.1
     * Improved UI Design.
 
+* 1.2
+    * Fixed ETA "arriving soon" text.
+
+ * 1.3
+    * Updated UI.
+
 <br>
 
 ## Future Planning
