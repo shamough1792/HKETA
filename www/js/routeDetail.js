@@ -121,8 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const lineName = lineNames[route] || { en: route, tc: route };
         const line = route;
         
-        document.getElementById('page-title').textContent = lineName.en;
-		document.getElementById('page-title').nextElementSibling.textContent = 'MTR';
+        document.getElementById('page-title').textContent = `${lineName.en} | MTR`;
         
         elements.routeNumber.innerHTML = `
             <div class="route-name">
