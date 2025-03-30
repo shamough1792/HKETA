@@ -121,7 +121,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const lineName = lineNames[route] || { en: route, tc: route };
         const line = route;
         
-        document.getElementById('page-title').textContent = `${lineName.en} | MTR`;
+        document.getElementById('page-title').textContent = lineName.en;
+		document.getElementById('page-title').nextElementSibling.textContent = 'MTR';
         
         elements.routeNumber.innerHTML = `
             <div class="route-name">
@@ -1066,7 +1067,7 @@ const allStations = {
         if (lang === 'en') {
             if (minutes > 0) return `${minutes} min`;
             if (minutes < 0) return 'Departed';
-            return 'Arriving';
+            return 'Arriving Soon';
         } else {
             if (minutes > 0) return `${minutes} 分鐘`;
             if (minutes < 0) return '已開出';
