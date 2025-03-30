@@ -1372,3 +1372,7 @@ button:focus, input:focus, select:focus, textarea:focus {
     border-radius: 50%;
     transition: var(--transition);
 }
+
+.search-lang-tc {
+    font-size: 12px;
+}

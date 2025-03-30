@@ -177,7 +177,7 @@ elements.routeCompany.style.height = '15px';
                     <button id="search-station" class="primary-btn">
                         <i class="fas fa-search"></i>
                         <span class="lang-en">Search</span>
-                        <span class="lang-tc">搜尋</span>
+                        <span class="search-lang-tc">搜尋</span>
                     </button>
                 </div>
                 
