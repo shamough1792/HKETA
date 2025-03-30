@@ -166,8 +166,8 @@ if (company === 'all' || company === 'mtr') {
             
             routeElement.innerHTML = `
                 <div class="route-header">
-                    <div class="route-number">${line.code}</div>
-<div class="route-company mtr" style="background-color: ${lineColor}"></div>
+					<div class="route-companys mtr">MTR</div>
+					<div class="route-company mtr" style="background-color: ${lineColor}"></div>
                 </div>
                 <div class="route-details">
                     <div class="route-direction">

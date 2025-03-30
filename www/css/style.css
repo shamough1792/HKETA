@@ -457,6 +457,17 @@ h5 { font-size: 0.875rem; }
 	min-height: 15px;
 }
 
+.route-companys.mtr {
+	background-color: #00254c;
+	color: white;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	font-size: 15px;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+}
+
 .route-company.ctb {
     background-color: rgba(250, 220, 0, 0.3);
     color: var(--ctb-blue);
