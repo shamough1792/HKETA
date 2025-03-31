@@ -382,11 +382,15 @@ h5 { font-size: 0.875rem; }
     justify-content: space-between;
     align-items: center;
     margin-bottom: var(--space-lg);
+	padding-top: 10px;
 }
 
 .section-header h2 {
     font-size: 18px;
     font-weight: 600;
+	margin-top: 10px;
+	border-bottom: 2px solid gray;
+    padding-bottom: 5px;
 }
 
 .section-header .see-all {
@@ -1308,9 +1312,10 @@ button:focus, input:focus, select:focus, textarea:focus {
 
 /* Compact platform info */
 .eta-platform {
-    padding: 2px 4px;
+    padding: 2px 2px;
     font-size: 0.8rem;
     margin-top: 2px;
+	text-align: left;
 }
 
 /* 已开出的班次样式 */
@@ -1394,4 +1399,42 @@ button:focus, input:focus, select:focus, textarea:focus {
 
 .search-lang-tc {
     font-size: 12px;
+}
+
+.joint-operation-indicator {
+    font-size: 12px;
+    color: #666;
+    margin-left: 8px;
+    padding: 2px 6px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.eta-company {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+#page-title {
+    margin-top: 7px;
+	padding-top: 7px;
+}
+
+.index-close-btn {
+    background-color: transparent; /* Transparent background */
+    color: #333; /* Dark icon color */
+    border: none; /* Remove default border */
+    padding: 10px 15px; /* Padding for a rectangular shape */
+    font-size: 20px; /* Icon size */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 4px; /* Slightly rounded corners (optional) */
+}
+
+.index-close-btn:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Light gray on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }

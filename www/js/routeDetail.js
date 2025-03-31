@@ -327,6 +327,7 @@ container.innerHTML = `
             dirElement.innerHTML = `
                 <h4>
                     <span class="lang-en">${directionName.en}</span>
+					<br>
                     <span class="lang-tc">${directionName.tc}</span>
                 </h4>
                 <div class="mtr-eta-list">
@@ -337,15 +338,15 @@ container.innerHTML = `
                                 <div class="lang-tc">往 ${getMtrStationName(eta.dest).name_tc}</div>
                             </div>
                             <div class="eta-ttnt">
-                                ${eta.ttnt < 0 
-                                    ? '<span class="lang-en">Departed </span><span class="lang-tc">已開出</span>'
+                                ${eta.ttnt < 0 || (eta.time && new Date(eta.time) < new Date())
+                                    ? '<span class="lang-en">Departed</span><br><span class="lang-tc">已開出</span>'
                                     : eta.ttnt <= 1
-                                        ? '<span class="lang-en">Arriving Soon </span><span class="lang-tc">即將到達</span>'
-                                        : `<span class="lang-en">${eta.ttnt} min | </span><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
+                                        ? '<span class="lang-en">Arriving Soon</span><br><span class="lang-tc">即將到達</span>'
+                                        : `<span class="lang-en">${eta.ttnt} min </span><br><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
                             </div>
                             ${eta.plat ? `
                                 <div class="eta-platform">
-                                    <span class="lang-en">Platform ${eta.plat} |</span>
+                                    <span class="lang-en">Platform ${eta.plat}</span><br>
                                     <span class="lang-tc">月台 ${eta.plat}</span>
                                 </div>` : ''}
                         </div>
@@ -545,7 +546,7 @@ const stationData = {
     function getDirectionName(line, direction) {
         const directionNames = {
             'AEL': {
-                'UP': { en: 'To Airport/AsiaWorld-Expo', tc: '往機場/博覽館' },
+                'UP': { en: 'To Airport/AsiaWorld-Expo', tc: '往 機場/博覽館' },
                 'DOWN': { en: 'To Hong Kong', tc: '往香港' }
             },
             'TCL': {
@@ -553,36 +554,36 @@ const stationData = {
                 'DOWN': { en: 'To Hong Kong', tc: '往香港' }
             },
             'EAL': {
-                'UP': { en: 'To Lo Wu/Lok Ma Chau', tc: '往羅湖/落馬洲' },
-                'DOWN': { en: 'To Admiralty', tc: '往金鐘' }
+                'UP': { en: 'To Lo Wu/Lok Ma Chau', tc: '往 羅湖/落馬洲' },
+                'DOWN': { en: 'To Admiralty', tc: '往 金鐘' }
             },
 			'TML': {
-        'UP': { en: 'To Tuen Mun', tc: '往屯門' },
-        'DOWN': { en: 'To Wu Kai Sha', tc: '往烏溪沙' }
+        'UP': { en: 'To Tuen Mun', tc: '往 屯門' },
+        'DOWN': { en: 'To Wu Kai Sha', tc: '往 烏溪沙' }
     },
 	'TKL': {
-        'UP': { en: 'To Po Lam', tc: '往寶琳' },
-        'DOWN': { en: 'To North Point', tc: '往北角' }
+        'UP': { en: 'To Po Lam', tc: '往 寶琳' },
+        'DOWN': { en: 'To North Point', tc: '往 北角' }
     },
 	'SIL': {
-        'UP': { en: 'To South Horizons', tc: '往海怡半島' },
-        'DOWN': { en: 'To Admiralty', tc: '往金鐘' }
+        'UP': { en: 'To South Horizons', tc: '往 海怡半島' },
+        'DOWN': { en: 'To Admiralty', tc: '往 金鐘' }
     },
     'TWL': {
-        'UP': { en: 'To Tsuen Wan', tc: '往荃灣' },
-        'DOWN': { en: 'To Central', tc: '往中環' }
+        'UP': { en: 'To Tsuen Wan', tc: '往 荃灣' },
+        'DOWN': { en: 'To Central', tc: '往 中環' }
     },
     'ISL': {
-        'UP': { en: 'To Chai Wan', tc: '往柴灣' },
-        'DOWN': { en: 'To Kennedy Town', tc: '往堅尼地城' }
+        'UP': { en: 'To Chai Wan', tc: '往 柴灣' },
+        'DOWN': { en: 'To Kennedy Town', tc: '往 堅尼地城' }
     },
     'KTL': {
-        'UP': { en: 'To Tiu Keng Leng', tc: '往調景嶺' },
-        'DOWN': { en: 'To Whampoa', tc: '往黃埔' }
+        'UP': { en: 'To Tiu Keng Leng', tc: '往 調景嶺' },
+        'DOWN': { en: 'To Whampoa/Ho Man Tin', tc: '往 黃埔/何文田' }
     },
     'DRL': {
-        'UP': { en: 'To Sunny Bay', tc: '往欣澳' },
-        'DOWN': { en: 'To Disneyland Resort', tc: '往迪士尼' }
+        'UP': { en: 'To Sunny Bay', tc: '往 欣澳' },
+        'DOWN': { en: 'To Disneyland Resort', tc: '往 迪士尼' }
     },
             'default': {
                 'UP': { en: 'Up Direction', tc: '上行方向' },
@@ -1015,7 +1016,7 @@ const allStations = {
                             to ${eta.dest_en}
                         </div>
                         <div class="lang-tc">
-                            <span class="eta-time">${etaTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+						<div class="lang-tc">${etaTime.toLocaleTimeString('zh-HK', {hour: '2-digit', minute:'2-digit'}).replace('上午', '上午 ').replace('下午', '下午 ')}</div>
                             往 ${eta.dest_tc}
                         </div>
                         ${eta.rmk_en ? `<div class="eta-remark lang-en">${eta.rmk_en}</div>` : ''}
@@ -1030,29 +1031,62 @@ const allStations = {
         }).filter(item => item !== '');
     }
 
-    function processCtbEtaData(etaData, now) {
-        return etaData.map(eta => {
-            const etaTime = new Date(eta.eta);
-            const minutesRemaining = Math.floor((etaTime - now) / 60000);
-            
-            let timeClass = '';
-            if (minutesRemaining <= 3) timeClass = 'eta-soon';
-            if (minutesRemaining < 0) timeClass = 'eta-departed';
-            
+function processCtbEtaData(etaData, now) {
+    return etaData.map(eta => {
+        
+        if (!eta || !eta.eta) {
             return `
-                <div class="eta-item ${timeClass}">
-                    <div class="eta-time">
-                        <div class="lang-en">${etaTime.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'})}</div>
-                        <div class="lang-tc">${etaTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                <div class="eta-item eta-no-eta">
+                    <div>
+                        <div class="lang-en">No ETA available</div>
+                        <div class="lang-tc">沒有到站時間資料</div>
                     </div>
                     <div class="eta-remaining">
-                        <div class="lang-en">${getRemainingTimeText(minutesRemaining, 'en')}</div>
-                        <div class="lang-tc">${getRemainingTimeText(minutesRemaining, 'tc')}</div>
+                        <div class="lang-en">--</div>
+                        <div class="lang-tc">--</div>
                     </div>
                 </div>
             `;
-        });
-    }
+        }
+
+        const etaTime = new Date(eta.eta);
+        
+        if (isNaN(etaTime.getTime())) {
+            return `
+                <div class="eta-item eta-no-eta">
+                    <div>
+                        <div class="lang-en">Invalid time data</div>
+                        <div class="lang-tc">時間資料無效</div>
+                    </div>
+                    <div class="eta-remaining">
+                        <div class="lang-en">--</div>
+                        <div class="lang-tc">--</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        const minutesRemaining = Math.floor((etaTime - now) / 60000);
+        
+        let timeClass = '';
+        if (minutesRemaining <= 3) timeClass = 'eta-soon';
+        if (minutesRemaining < 0) timeClass = 'eta-departed';
+		
+        
+        return `
+            <div class="eta-item ${timeClass}">
+                <div class="eta-time">
+                    <div class="lang-en">${etaTime.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'})}</div>
+                    <div class="lang-tc">${etaTime.toLocaleTimeString('zh-HK', {hour: '2-digit', minute:'2-digit'}).replace('上午', '上午 ').replace('下午', '下午 ')}</div>
+                </div>
+                <div class="eta-remaining">
+                    <div class="lang-en">${getRemainingTimeText(minutesRemaining, 'en')}</div>
+                    <div class="lang-tc">${getRemainingTimeText(minutesRemaining, 'tc')}</div>
+                </div>
+            </div>
+        `;
+    });
+}
 
     function processNlbEtaData(etaData, now) {
         if (!etaData.estimatedArrivals) return ['<div class="eta-no-data">No ETA data available</div>'];
@@ -1069,7 +1103,7 @@ const allStations = {
                 <div class="eta-item ${timeClass}">
                     <div class="eta-time">
                         <div class="lang-en">${etaTime.toLocaleTimeString('en-US', {hour: '2-digit', minute:'2-digit'})}</div>
-                        <div class="lang-tc">${etaTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+						<div class="lang-tc">${etaTime.toLocaleTimeString('zh-HK', {hour: '2-digit', minute:'2-digit'}).replace('上午', '上午 ').replace('下午', '下午 ')}</div>
                     </div>
                     <div class="eta-remaining">
                         <div class="lang-en">${getRemainingTimeText(minutesRemaining, 'en')}</div>
