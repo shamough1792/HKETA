@@ -100,6 +100,9 @@ A comprehensive mobile-friendly web application for accessing real-time public t
  * 1.5
     * Updated app text font to MTR-SUNG.
 
+ * 1.6
+    * Updated UI.
+   
 <br>
 
 ## Future Planning
