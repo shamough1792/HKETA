@@ -56,19 +56,29 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 
 <br>
 
-
-
-<br>
-
-
+![Alt Text](images/index.jpg)
 
 <br>
 
+![Alt Text](images/route-detail.jpg)
+
 <br>
 
+![Alt Text](images/bus-eta.jpg)
 
 <br>
 
+![Alt Text](images/mtr-route.jpg)
+
+<br>
+
+![Alt Text](images/mtr-route-detail.jpg)
+
+<br>
+
+![Alt Text](images/mtr-eta.jpg)
+
+<br>
 
 ## Authors
 
