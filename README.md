@@ -19,6 +19,7 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 <br>
 
 * Multi-Transport Integration: View routes and information for:
+  
    * KMB & Long Win Buses.
    * Citybus.
    * New Lantao Bus (NLB).
@@ -27,12 +28,14 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 <br>
 
 * Real-time Arrival Information:
+  
   * Get estimated arrival times (ETA) for buses at any stop.
   * View upcoming train schedules for MTR stations.
 
 <br>
 
 * Interactive Route Details:
+  
   * View complete stop lists for all routes.
   * Toggle between inbound/outbound directions.
   * See route origins and destinations in English and Chinese.
@@ -40,6 +43,7 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 <br>
 
 * User-Friendly Interface:
+  
   * Clean, modern design with responsive layout.
   * Fast search functionality.
   * Sidebar navigation.
@@ -47,6 +51,7 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 <br>
 
 * Additional Features:
+  
   * Station location mapping.
   * Bilingual interface (English/Chinese).
 
