@@ -10,6 +10,7 @@ platforms/
 my-release-key.keystore
 *-private.json
 *-keys.xml
+build.json
 
 # Build artifacts
 /build/
