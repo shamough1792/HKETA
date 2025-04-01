@@ -341,7 +341,7 @@ container.innerHTML = `
                                 ${eta.ttnt < 0 || (eta.time && new Date(eta.time) < new Date())
                                     ? '<span class="lang-en">Departed</span><br><span class="lang-tc">已開出</span>'
                                     : eta.ttnt <= 1
-                                        ? '<span class="lang-en">Arriving Soon</span><br><span class="lang-tc">即將到達</span>'
+                                        ? '<span class="lang-en">Arriving Soon / Arrived</span><br><span class="lang-tc">即將到達 / 已到達</span>'
                                         : `<span class="lang-en">${eta.ttnt} min </span><br><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
                             </div>
                             ${eta.plat ? `
@@ -1119,11 +1119,11 @@ function processCtbEtaData(etaData, now) {
         if (lang === 'en') {
             if (minutes > 0) return `${minutes} min`;
             if (minutes < 0) return 'Departed';
-            return 'Arriving Soon';
+            return 'Arriving Soon / Arrived';
         } else {
             if (minutes > 0) return `${minutes} 分鐘`;
             if (minutes < 0) return '已開出';
-            return '即將到站';
+            return '即將到站 / 已到達';
         }
     }
 

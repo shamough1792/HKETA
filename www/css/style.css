@@ -614,6 +614,7 @@ h5 { font-size: 0.875rem; }
     display: flex;
     gap: var(--space-sm);
     margin-bottom: var(--space-lg);
+	flex-direction: row;
 }
 
 .direction-btn {
@@ -625,6 +626,7 @@ h5 { font-size: 0.875rem; }
     text-align: center;
     transition: var(--transition);
     cursor: pointer;
+	min-width: 0;
 }
 
 .direction-btn.active {
@@ -637,6 +639,8 @@ h5 { font-size: 0.875rem; }
     display: flex;
     flex-direction: column;
     gap: var(--space-xs);
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .lang-en {
@@ -1216,10 +1220,6 @@ button:focus, input:focus, select:focus, textarea:focus {
     
     .quick-btn {
         min-width: calc(50% - 5px);
-    }
-    
-    .direction-switcher {
-        flex-direction: column;
     }
     
     .route-card {
