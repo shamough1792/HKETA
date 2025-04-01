@@ -117,6 +117,9 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 
  * 1.6
     * Updated UI.
+  
+* 1.7
+   * Updated eta display text.
    
 <br>
 
