@@ -93,39 +93,6 @@ A comprehensive mobile-friendly web application for accessing real-time public t
 
 <br>
 
-## Version History
-
-<br>
-
-* 1.0
-    * Initial Release.
-
-* 1.1
-    * Improved UI Design.
-
-* 1.2
-    * Fixed ETA "arriving soon" text.
-
- * 1.3
-    * Updated UI.
-
- * 1.4
-    * Updated MTR route UI.
-  
- * 1.5
-    * Updated app text font to MTR-SUNG.
-
- * 1.6
-    * Updated UI.
-  
-* 1.7
-   * Updated eta display text.
- 
-* 1.8
-   * Updated splash screen.
-   
-<br>
-
 ## Future Planning
 
 <br>
