@@ -339,7 +339,7 @@ container.innerHTML = `
                             </div>
                             <div class="eta-ttnt">
                                 ${eta.ttnt < 0 || (eta.time && new Date(eta.time) < new Date())
-                                    ? '<span class="lang-en">Departed</span><br><span class="lang-tc">已開出</span>'
+                                    ? '<span class="lang-en">Departed</span><br><span class="lang-tc">已到達 / 已開出</span>'
                                     : eta.ttnt <= 1
                                         ? '<span class="lang-en">Arriving Soon / Arrived</span><br><span class="lang-tc">即將到達 / 已到達</span>'
                                         : `<span class="lang-en">${eta.ttnt} min </span><br><span class="lang-tc">${eta.ttnt} 分鐘</span>`}
@@ -562,7 +562,7 @@ const stationData = {
         'DOWN': { en: 'To Wu Kai Sha', tc: '往 烏溪沙' }
     },
 	'TKL': {
-        'UP': { en: 'To Po Lam', tc: '往 寶琳' },
+        'UP': { en: 'To Po Lam/LOHAS Park', tc: '往 寶琳/康城' },
         'DOWN': { en: 'To North Point', tc: '往 北角' }
     },
 	'SIL': {
