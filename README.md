@@ -120,6 +120,9 @@ A comprehensive mobile-friendly web application for accessing real-time public t
   
 * 1.7
    * Updated eta display text.
+ 
+* 1.8
+   * Updated splash screen.
    
 <br>
 
