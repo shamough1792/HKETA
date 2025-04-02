@@ -17,5 +17,8 @@
     <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
 </platform>
 
+<preference name="AndroidWindowSplashScreenAnimatedIcon" value="res/android/splash-xxxhdpi.png" />
+<preference name="AndroidWindowSplashScreenBackground" value="#f5f6f7" />
+
 </widget>
 
